@@ -1,0 +1,54 @@
+\section{Java 学习报告}
+
+ Java 是一门面向对象的程序设计语言。 外观看上去和C++很像。 但实际上Java是完全OOP风格的，
+ 就连main入口函数都要包在某个类里面， 可见其设计者的洁癖程度。
+
+ 我基本没有接触过Java，不过在某次做游戏时学习了几个标准类(String, Array, StringBuilder, Scanner, OutputStreamWriter, Socket)的用法, 
+ 所以谈谈一个初学者的粗浅见解。
+ 
+ 在写了一个HelloWorld之后, 发现Java的类声明中每个成员（变量或函数）都要声明其访问属性，这样有利于灵活性和代码但维护。
+ 另外Java的一个类只在一个文件里面， 省去了在头文件声明一次，又在实现文件里面写一次函数头但麻烦。
+
+ 到目前为止， 我最喜欢Java的一点是，其所有变量都是类实例的引用（为了提高速度，数值类型可能例外做了优化）。而且内存是自动
+ 管理回收的，让程序员可以把注意力集中到更关键的地方, 不用像写C程序一样时刻担心内存管理问题. 另外java是运行在JVM（Java虚拟机）上的，有点像
+ 动态语言但解析器，这样Java但可移植性大大提高。这几点使Java在使用上和一些动态语言比较相似（例如 Python）。
+
+ 下面是我配置Java环境的过程：
+
+ \begin{itemize}
+     \item 由于我使用的OS是Archlinux, 所以我用pacman（包管理器）来安装java环境。
+     \item 根据Sun官方网站的安装指导, 知道需要JRE和JDK这两样东西
+     \item 用命令:
+         \begin{verbatim}
+         # pacman -Ss jdk
+         \end{verbatim}
+         搜索得到arch官方源里面有jdk7-openjdk和jre7-openjdk可以用。
+     \item 用命令
+         \begin{verbatim}
+         # pacman -S jdk7-openjdk jre7-openjdk
+         \end{verbatim}
+         进行安装。
+ \end{itemize}
+当前两者的版本都是 7.u5 .
+
+ 至于环境变量的配置, 安装完重启session发现环境变量中已经有 JAVA\_Home了, 于是用\verb=pacman -Ql jdk7-openjdk|grep etc=命令查看了这个包但配置文件,
+ 发现在 /etc/profile.d/ 里面有配置文件 jdk.sh, jre.sh。已经完成了配置。
+
+ \begin{verbatim}
+ # configs in jdk.sh
+ export J2SDKDIR=/usr/lib/jvm/java-7-openjdk
+ export J2REDIR=$J2SDKDIR/jre
+ export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+
+ # configs in jre.sh
+ export J2REDIR=/usr/lib/jvm/java-7-openjdk/jre
+ export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/java-7-openjdk/jre}
+ \end{verbatim}
+
+ 然后写了一个HelloWorld.java来测试, 执行:
+ \begin{verbatim}
+ # vim HelloWorld.java
+  ...
+ # javac HelloWorld.java && java HelloWorld.class
+ \end{verbatim}
+ 成功输出。

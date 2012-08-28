@@ -1,0 +1,34 @@
+\documentclass[11pt,a4paper]{article}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+\usepackage[left = 2.8cm, right = 3.2cm, bottom = 3cm]{geometry}
+\usepackage[BoldFont,SlantFont]{xeCJK}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+%command definitions
+\newcommand{\addPic}[1]{\includegraphics*[scale=0.7]{#1}}
+\newcommand{\newTest}[2]%the #1 is the test descripion, the #2 is the pic name
+{#1\\{}\addPic{#2}}
+\newcommand{\shcommand}[1]{\begin{verbatim} {#1} \\
+\end{verbatim}}
+
+\setCJKmainfont{WenQuanYi Zen Hei}
+%\setCJKfamilyfont{quote}[]{KaiTi}
+%\setCJKfamilyfont{normal}[]{FangSong}
+%\CJKfamily{normal}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+
+\title{实训学习报告}
+\author{梁展瑞 \\ {\small 中山大学软件学院\hspace{24pt}2010计应\hspace{24pt}学号10389084}}
+\maketitle
+
+\input{vim_report.tex}
+\input{java_report.tex}
+
+\end{document}

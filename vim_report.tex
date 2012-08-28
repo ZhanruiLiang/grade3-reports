@@ -1,0 +1,50 @@
+\section{Vim 学习报告}
+
+由于 Vim 的功能超越了古老而光荣的 Vi, 所以我选择使用 Vim. Vim 是个文本编辑器, 其学习曲线陡峭之大, 让一般人刚入门时觉得无所适从.
+但是当使用熟练时, 它便是你爱不释手的编辑利器.
+
+在一天的学习过程中，我学习和熟悉了Vim使用. 它在平常的编辑工作中作用巨大，其功能有下:
+
+\begin{itemize}
+\item 查看和修改配置文件
+\item 编写代码
+\item 编写学习报告
+\item 充当文件浏览器，利用其强大的搜索功能.
+\end{itemize}
+
+Vim 的主要特点是带模式的编辑，这点与另一个著名的编辑器Emacs（Emacs是否是编辑器这个存在争议，有人说它时一个操作系统）相反。 在正常模式下, 我们用h,j,k,l分别进行
+左,下,上,右进行导航。要输入时, 在按了i, a, r, R 等健后, 我们便从正常模式(normal)切换到输入(insert)模式, 进行文本输入。Vim 还有其他几种模式, 比较常用的除输入模式外还有命令输入模式(:后跟命令), v模式（visual mode).
+有了模式之后, 可以大大减少组合键的使用, 减少手指的劳累程度。
+
+使用 Vim 工作可以大大提高工作效率, Vim 的作者把常用键位安排在了手指最容易到达的地方, 使编辑时手指很少离开 home 行, 更不用说鼠标了, Vim 的使用是不需要鼠标的。
+
+另一个强大的地方是 Vim 还有自己的 script, 可以编写灵活的配置文件和执行复杂的编辑要求。例如, 可以编写一个脚本函数, 在按了 <F5> 之后在光标所在的地方插入当前日期, 这仅仅
+需要一行
+\begin{verbatim}
+    inoremap <F5> <C-R>=strftime("%c")<CR>
+\end{verbatim}
+再例如, 我只想在编辑c++源代码的时候绑定几个键位: 
+\begin{itemize}
+\item press F7 to compile, or make.
+\item press F6 to compile, with DEBUG flag.
+\item press F5 to run the compile program.
+\end{itemize}
+那么我在配置脚本里加上如下几行就行：
+
+\begin{verbatim}
+    au BufNewFile,BufRead *.cpp nmap <F5> :!./a < in<CR>
+    au BufNewFile,BufRead *.cpp nmap <F6> :!g++ % -o a -g -DDEBUG<CR>
+    au BufNewFile,BufRead *.cpp nmap <F7> :!g++ % -o a<CR>
+\end{verbatim}
+
+在熟悉vim脚本之后, 还可以组合出更加多实用的功能, 在程序员手上发挥更强的功能。
+
+vim的使用方式和设计方式已经渗入到许多软件当中, 
+    \begin{itemize}
+        \item Firefox 有个插件Pentadactyl, 可以用hjkl进行网页浏览, 使用yy,pp进行复制粘贴, 用m（mark）进行书签, 带有:(coloum）命令模式
+            另外, Chrome也有类似的插件。
+        \item Linux 下的平铺式窗口管理器（Tiling Windows Manager, also TWM, but not twm), 一般都使用hjkl进行窗口跳转, 大大减少鼠标的使用。
+        \item 有一个TUI式的文件管理器（实现windows explorer的功能）, Ranger, 使用hjkl导航, 用yy,pp,dd,o{x}进行复制,粘贴,剪切等, 还带有v模式。使用非常方便,功能强大。用Python写成。
+    \end{itemize}
+
+认真学习 Vim 对我日后的学习和工作将会有极大帮助。

@@ -1,0 +1,12 @@
+imap ， ,
+imap　（ (
+imap　） )
+imap　。 .
+imap　“ "
+imap　” "
+imap　‘ '
+imap　’ '
+imap 　 \ 
+
+nmap <F3> :!xelatex StudyReport.tex && evince StudyReport.pdf<Cr>
+nmap <F4> :%s/　/ /g<Cr>
